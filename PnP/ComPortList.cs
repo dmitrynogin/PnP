@@ -20,7 +20,11 @@ namespace PnP
         List<ComPort> Items { get; }
         Subject<ComPortUpdate> Subject { get; }
 
-        public void Dispose() => Watcher.Dispose();
+        public void Dispose()
+        {
+            Watcher.Dispose();
+            Subject.Dispose();
+        }
                 
         public override IEnumerator<ComPort> GetEnumerator()
         {
